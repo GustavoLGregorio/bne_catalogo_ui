@@ -1,9 +1,44 @@
 @import "tailwindcss";
+@import "tailwind-scrollbar-hide/v4";
 
 @theme {
   --color-background: #050014;
+  --color-background-ligth: #000000a8;
   --color-foreground: #ffffff;
+  --color-foreground-ligth: #ffffff1a;
   --color-text: #dddddd;
+  --color-text-dark: #333333;
   --color-tint-dark: #38007a;
-  --color-tint-ligth: #7c57ff;
+  --color-tint-light: #7b57ff54;
+  --color-gold: #ffd700;
+  --color-nav-background: #0f0c18;
+  --color-nav-background-layer: #05001454;
+  --color-nav-tint: #4f00ad;
+}
+
+.font-inter {
+  font-family: var(--font-inter);
+}
+.font-tinos-regular {
+  font-family: var(--font-tinos-regular);
+}
+.font-tinos-bold {
+  font-family: var(--font-tinos-bold);
+}
+.font-playfair {
+  font-family: var(--font-playfair);
+}
+/* 
+.book-shadow {
+  position: relative;
+} */
+.book-shadow::after {
+  position: absolute;
+  left: 50%;
+  translate: -50% 0%;
+  content: "";
+  width: 2px;
+  background: hsl(0, 33%, 94%);
+  height: 100%;
+  box-shadow: 0px 0px 36px 2px hsl(0, 0%, 0%, 0.33);
 }
