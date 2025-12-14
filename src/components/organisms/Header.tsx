@@ -1,14 +1,21 @@
 "use client";
 
 import Logo from "../molecules/Logo";
-import { faBars, faSearch, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faUser } from "@fortawesome/free-solid-svg-icons";
 import CustomIcon from "../atoms/CustomIcon";
-import HeaderNavigation from "./HeaderNavigation";
+import Aside from "./Aside";
 import { emitter } from "@/tools/eventBus";
+import SearchBar from "../molecules/SearchBar";
+import { useRef } from "react";
 
 export default function Header() {
+  const headerRef = useRef<HTMLHeadElement | null>(null);
+
   return (
-    <header className="bg-tint-dark sticky top-0 z-50 m-0 flex w-full flex-row items-center justify-between gap-3 px-3 py-3">
+    <header
+      className="bg-tint-dark sticky top-0 z-50 m-0 flex w-full flex-row items-center justify-between gap-3 px-3 py-3"
+      ref={headerRef}
+    >
       <div className="flex items-center gap-3">
         <button
           className="aspect-square w-11 cursor-pointer"
@@ -29,15 +36,8 @@ export default function Header() {
       </div>
 
       <div className="flex items-center gap-3">
-        <button className="aspect-square w-[34px]">
-          <CustomIcon
-            icon={faSearch}
-            size="lg"
-            hasRounding={false}
-            hasBackground={true}
-          />
-        </button>
-        <HeaderNavigation />
+        <SearchBar anchorContainer={headerRef.current} />
+        <Aside />
         <button className="aspect-square w-11">
           <CustomIcon
             icon={faUser}
