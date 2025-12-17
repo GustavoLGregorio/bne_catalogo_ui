@@ -3,10 +3,12 @@
 import Logo from "../molecules/Logo";
 import { faBars, faUser } from "@fortawesome/free-solid-svg-icons";
 import CustomIcon from "../atoms/CustomIcon";
-import Aside from "./Aside";
+import AsideContainer from "./AsideContainer";
 import { emitter } from "@/tools/eventBus";
 import SearchBar from "../molecules/SearchBar";
 import { useRef } from "react";
+import AsideUser from "./AsideUser";
+import AsideNavigation from "./AsideNavigation";
 
 export default function Header() {
   const headerRef = useRef<HTMLHeadElement | null>(null);
@@ -20,7 +22,7 @@ export default function Header() {
         <button
           className="aspect-square w-11 cursor-pointer"
           type="button"
-          onClick={() => emitter.emit("navToggler")}
+          onClick={() => emitter.emit("toggleNavigation")}
         >
           <CustomIcon
             icon={faBars}
@@ -37,8 +39,13 @@ export default function Header() {
 
       <div className="flex items-center gap-3">
         <SearchBar anchorContainer={headerRef.current} />
-        <Aside />
-        <button className="aspect-square w-11">
+        <AsideContainer eventTarget="toggleNavigation">
+          <AsideNavigation />
+        </AsideContainer>
+        <button
+          className="aspect-square w-11"
+          onClick={() => emitter.emit("toggleUser")}
+        >
           <CustomIcon
             icon={faUser}
             size="xl"
@@ -47,6 +54,9 @@ export default function Header() {
             hasIconRounding={true}
           />
         </button>
+        <AsideContainer eventTarget="toggleUser">
+          <AsideUser />
+        </AsideContainer>
       </div>
     </header>
   );

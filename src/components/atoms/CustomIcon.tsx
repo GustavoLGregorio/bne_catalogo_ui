@@ -3,7 +3,7 @@ import type { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 
 export type CustomIconProps = {
   icon: IconDefinition;
-  size?: "sm" | "md" | "lg" | "xl" | "2xl";
+  size?: "sm" | "md" | "lg" | "xl" | "2xl" | "6xl";
   hasRounding: boolean;
   hasBackground: boolean;
   hasIconRounding?: boolean;
@@ -31,6 +31,9 @@ export default function CustomIcon(props: CustomIconProps) {
         break;
       case "2xl":
         iconSize = "text-[26px]";
+        break;
+      case "6xl":
+        iconSize = "text-[64px]";
         break;
       default:
         iconSize = "text-[18px]";

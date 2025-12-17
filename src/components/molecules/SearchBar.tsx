@@ -40,20 +40,20 @@ export default function SearchBar(props: SearchBarProps) {
   };
 
   useEffect(() => {
-    emitter.on("navSearchBarToggler", navSearchBarToggler);
+    emitter.on("toggleSearchBar", navSearchBarToggler);
 
-    return () => emitter.off("navSearchBarToggler", navSearchBarToggler);
+    return () => emitter.off("toggleSearchBar", navSearchBarToggler);
   }, [isSearchBarToggled, anchorSize, searchBarClasses]);
 
   if (!isSearchBarToggled) {
     return (
       <div
-        className={`${searchBarClasses} h-full w-full bg-[red] transition-all`}
+        className={`${searchBarClasses} h-full w-full transition-all`}
         ref={containerRef}
       >
         <button
           className="aspect-square w-[34px] cursor-pointer"
-          onClick={() => emitter.emit("navSearchBarToggler")}
+          onClick={() => emitter.emit("toggleSearchBar")}
         >
           <CustomIcon
             icon={faSearch}
@@ -68,12 +68,12 @@ export default function SearchBar(props: SearchBarProps) {
 
   return (
     <div
-      className={`${searchBarClasses} h-full w-full bg-[red] transition-all`}
+      className={`${searchBarClasses} h-full w-full transition-all`}
       ref={containerRef}
     >
       <button
         className="aspect-square w-[34px] cursor-pointer"
-        onClick={() => emitter.emit("navSearchBarToggler")}
+        onClick={() => emitter.emit("toggleSearchBar")}
       >
         <CustomIcon
           icon={faSearch}
