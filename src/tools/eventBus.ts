@@ -2,8 +2,9 @@ import { trace } from "console";
 import mitt from "mitt";
 
 export type EmitterType = {
-  navToggler: void;
-  navSearchBarToggler: void;
+  toggleNavigation: void;
+  toggleSearchBar: void;
+  toggleUser: void;
 };
 
 const emitter = mitt<EmitterType>();
